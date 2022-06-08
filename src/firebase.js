@@ -1,7 +1,8 @@
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import 'firebase/compat/firestore'
-import 'firebase/compat/storage'
+import { getStorage } from 'firebase/storage'
+
 // // import {getFirestore} from 'firebase/firestore'
 // import {getStorage} from 'firebase/storage'
 
@@ -21,6 +22,10 @@ const app = firebase.initializeApp({
     appId: "713939772583:web:2b346c2fc35244f4bae782"
 })
 
+export const storage = getStorage(app)
+export const auth = app.auth()
+export default app
+
 
 // const app = initializeApp(firebaseConfig);
 // const firestore = getFirestore(app);
@@ -28,22 +33,15 @@ const app = firebase.initializeApp({
 // const docRef = doc(database,'objects', '')
 // const getCurrentTime = await updateDoc()
 
-const firestore = app.firestore()
-export const database = {
-    folders: firestore.collection('folders'),
-    files: firestore.collection('files'),
-    formatDoc: doc => { 
-        return {id: doc.id, ...doc.data()}
-    },
-    getCurrentTime: firebase.firestore.FieldValue.serverTimestamp,
-}
-export const storage = app.storage()
-export const auth = app.auth()
-export default app
-
-
-
-
+// const firestore = app.firestore()
+// export const database = {
+//     folders: firestore.collection('folders'),
+//     files: firestore.collection('files'),
+//     formatDoc: doc => { 
+//         return {id: doc.id, ...doc.data()}
+//     },
+//     getCurrentTime: firebase.firestore.FieldValue.serverTimestamp,
+// }
 
 
 

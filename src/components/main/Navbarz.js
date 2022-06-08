@@ -8,9 +8,9 @@ export default function Navbarz() {
         <Navbar.Brand className ="ms-3 text-white" as={Link} to = "/">
           <h1 className="display-5">Submit It</h1>
         </Navbar.Brand>
-      <Nav>
-        <Nav.Link as={Link} to="/profile">
-          <div className="lead fs-4 ">Profile</div>
+      <Nav className="justify-content-end me-4" style={{ width: "100%" }}>
+        <Nav.Link className as={Link} to="/profile">
+          <div className="lead fs-4 text-white ">Profile</div>
         </Nav.Link>
       </Nav>
     </Navbar>
