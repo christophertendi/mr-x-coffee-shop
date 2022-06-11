@@ -54,12 +54,14 @@ export default function Home() {
       </div>
       <div className="text-center mt-3">
         <input type="file" onChange={(event) => {setFileUpload(event.target.files[0])}}></input>
-        <Button className ="btn btn-primary " onClick={uploadFile}>
-        <FontAwesomeIcon icon={faFileUpload} />
+        <Button className ="btn btn-primary" onClick={uploadFile}>
+          <FontAwesomeIcon icon={faFileUpload} />
         </Button>
+        <div width="300px" height = "auto" display="flex" align-items="center">
         {fileList.map((url) => {
-          return <img src = {url}/>
-        })}
+            return <img src = {url} />
+          })}
+        </div>
       </div>
 
 
