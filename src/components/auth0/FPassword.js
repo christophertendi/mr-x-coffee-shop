@@ -9,7 +9,7 @@ export default function FPassword() {
     const eRef = useRef()
     const { rPassword } = useAuth()
     const[error, sError] = useState("")
-    const[message, sMessage] = useState("")
+    // const[message, sMessage] = useState("")
     const[loading, sLoading] = useState(false)
 
     async function Submith(e)
@@ -17,11 +17,11 @@ export default function FPassword() {
         e.preventDefault()
 
         try{
-            sMessage("")
+            console.log(e)
             sError("")
             sLoading(true)
             await rPassword(eRef.current.value) 
-            sMessage("Please check your inbox for further instructions")
+            alert("Please check your inbox for further instructions")
         }   catch (e) { console.log(e) 
             sError("Please enter the correct email address")
 
@@ -46,7 +46,7 @@ export default function FPassword() {
                         </div>
                     </Form> 
                     <div className="w-100 text-center mb-2 mt-4">
-                        <h6><Link to="/login" class>Login</Link></h6>
+                        <h6><Link to="/login">Login</Link></h6>
                     </div>
                 </Card.Body>
             </Card>
