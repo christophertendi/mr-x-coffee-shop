@@ -28,7 +28,7 @@ export default function SignUp() {
             await signup(eRef.current.value, pRef.current.value)
             navigate("/login")
         }   catch (e){ console.log(e) 
-            sError("Sign up failed, make sure you have entered the correct credentials (password min. 6 characters)")
+            sError("Sign up failed, account already exists")
 
         }   
 

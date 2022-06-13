@@ -1,4 +1,5 @@
 import React from 'react'
+import Carousel from 'better-react-carousel'
 import { Button, Container } from 'react-bootstrap'
 import Navbar from './Navbarz'
 import { useState, useEffect } from 'react'
@@ -27,7 +28,7 @@ export default function Home() {
     const fileRef = ref(storage, `files/${fileUpload.name + v4() }`)
     uploadBytes(fileRef, fileUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
-        setFileList((prev) => [...prev, ])
+        setFileList((prev) => [...prev, url ])
         alert("File successfully uploaded")
       })
       
@@ -55,36 +56,15 @@ export default function Home() {
       <div className="text-center mt-3">
         <input type="file" onChange={(event) => {setFileUpload(event.target.files[0])}}></input>
         <Button className ="btn btn-primary" onClick={uploadFile}>
-          <FontAwesomeIcon icon={faFileUpload} />
+          <FontAwesomeIcon  icon={faFileUpload} />
         </Button>
-        <div width="300px" height = "auto" display="flex" align-items="center">
-        {fileList.map((url) => {
-            return <img src = {url} />
-          })}
-        </div>
       </div>
-
-
-
-
-        {/* <AddFolder currentFolder = {folder} />
-        <AddFile currentFolder = {folder} />
-        {childFolders.length > 0 && (
-          <div className="d-flex flex-wrap">
-            {childFolders.map(childFolder => (
-              <div 
-                key = {childFolder.id} 
-                style ={{maxWidth: '300px'}} 
-                className = "p-2"
-              
-              >
-                <Folder folder={childFolder} />
-    
-              </div>
-            ))}
-          </div>
-        )} */}
-      </Container>
+      <div>
+        {fileList.map((url) => {
+          return <img  class = "d-grid mx-auto mt-5 mb-5 rounded" width="300px" height = "auto" display="flex" align-items="center"src = {url} />  
+        })}
+      </div> 
+      </Container>   
     </>
   )
 }
