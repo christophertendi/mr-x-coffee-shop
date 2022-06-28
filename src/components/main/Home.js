@@ -23,6 +23,7 @@ export default function Home() {
         <a class="btn btn-outline-dark btn-floating m-1 text-center" href="#!" role="button">
           Order
         </a>
+        {/* images are from https://www.pexels.com/ free stock photo website */}
         <div class="row">
         <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
           <figure class = "figure">
