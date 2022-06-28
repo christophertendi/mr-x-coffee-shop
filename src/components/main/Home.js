@@ -120,32 +120,3 @@ export default function Home() {
   )
 }
 
-
-
-
-
-
-
-
-
-  // const { folder, cFolders } = useFolder("5xHO94FJ1Ym91SDjNRXv")
-  // console.log(cFolders)
-
-  // return (
-  //   <>
-  //       <Navbar />
-  //       <Container fluid>
-  //         <Upload currentFolder = {folder} />
-  //         {cFolders.length > 0 && (
-  //           <div className="d-flex flex-wrap">
-  //             {cFolders.map(childFolder => (
-  //               <div key ={childFolder.id} style={{ maxWidth: '3000px'}} className = "p-2 mt-2"
-  //               >
-  //                 <Folder folder = {childFolder} />
-  //               </div>
-  //             ))}
-  //           </div>
-  //         )}
-  //       </Container>
-  //   </>
-
