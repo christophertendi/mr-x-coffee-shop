@@ -1,70 +1,118 @@
 import React from 'react'
-import Carousel from 'better-react-carousel'
-import { Button, Container } from 'react-bootstrap'
+import {Container } from 'react-bootstrap'
 import Navbar from './Navbarz'
-import { useState, useEffect } from 'react'
-import { storage } from '../../firebase'
-import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage'
-import { v4 } from 'uuid'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileUpload } from '@fortawesome/free-solid-svg-icons'
-// import AddFolder from './AddFolder'
-// import AddFile from './AddFile'
-// import { useFolder } from '../../hook/useFolder'
-// import Folder from './Folder'
-// import Upload from './Upload'
-// import { useFolder } from '../../hk/uFolder'
+import menu from '../../images/menu.jpg'
+import menu2 from '../../images/menu2.jpg'
+import menu3 from '../../images/menu3.jpg'
+import menu4 from '../../images/menu4.jpg'
+import menu5 from '../../images/menu5.jpg'
+import menu6 from '../../images/menu6.jpg'
+
 
 export default function Home() {
-  // const { folder, childFolders }  = useFolder("eHux7yJ18s32XVaGFGKV")
-  // console.log(childFolders)
-
-  const [fileUpload, setFileUpload] = useState(null)
-  const [fileList, setFileList] = useState([])
-  const fileListRef = ref(storage, "files/")
-
-  const uploadFile = () => {
-    if(fileUpload == null) return
-    const fileRef = ref(storage, `files/${fileUpload.name + v4() }`)
-    uploadBytes(fileRef, fileUpload).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        setFileList((prev) => [...prev, url ])
-        alert("File successfully uploaded")
-      })
-      
-    })
-  }
-
-  useEffect(() => {
-    listAll(fileListRef).then((response) => {
-      response.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          setFileList((prev) => [...prev, url])
-        })
-      })
-    })
-  }, [])
-  
-
   return(
     <>
       <Navbar />
       <Container fluid>
-      <div className="text-center fs-4 mt-3">
-        Hi! Welcome to Submit It, where you can upload files in a secure storage space. Images files will be displayed in the website.
+        <div className="text-center fs-4 mt-3 mb-3">
+          Promo: Up to 30% off all beverages till 30th of July
+        </div>
+        <div className="text-center fs-4 mt-3 mb-3">
+          New Menu
+        </div>
+        <div class="row">
+        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+          <figure class = "figure">
+            <img
+              src= {menu}
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="menu"
+            />
+            <figcaption class="figure-caption">Expresso</figcaption>
+          </figure>
+
+          <figure class = "figure">
+            <img
+            src= {menu2}
+            class="w-100 shadow-1-strong rounded mb-4"
+            alt="menu"
+            />
+            <figcaption class="figure-caption">Americano</figcaption>
+          </figure>
+        </div>
+      
+        <div class="col-lg-4 mb-4 mb-lg-0">
+        <figure class = "figure"> 
+          <img
+            src= {menu3}
+            class="w-100 shadow-1-strong rounded mb-4"
+            alt="menu"
+          />
+          <figcaption class="figure-caption">Croissant</figcaption>
+          
+          </figure>
+        
+          <figure class = "figure"> 
+            <img
+              src= {menu4}
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="menu"
+            />
+          <figcaption class="figure-caption">Bagel</figcaption>
+          
+          </figure>
+        </div>
+        <div class="col-lg-4 mb-4 mb-lg-0">
+        <figure class = "figure"> 
+          <img
+            src= {menu5}
+            class="w-100 shadow-1-strong rounded mb-4"
+            alt="menu"
+          />
+          <figcaption class="figure-caption">Lemon Tea</figcaption>
+          
+          </figure>
+
+          <figure class = "figure"> 
+            <img
+              src= {menu6}
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="menu"
+            />
+            <figcaption class="figure-caption">Chocolate Cake</figcaption>
+          </figure>
+        </div>
+    </div>
+    </Container>
+    <footer class="bg-secondary text-center text-white">
+      <div class="container p-4 pb-0">
+        <section class="mb-4">
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+            Facebook
+          </a>
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+            Instagram
+          </a>
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+            Twitter
+          </a>
+        </section>
       </div>
-      <div className="text-center mt-3">
-        <input type="file" onChange={(event) => {setFileUpload(event.target.files[0])}}></input>
-        <Button className ="btn btn-primary" onClick={uploadFile}>
-          <FontAwesomeIcon  icon={faFileUpload} />
-        </Button>
+      <div class="text-center p-3">
+         Location: Kelapa Gading 
       </div>
-      <div>
-        {fileList.map((url) => {
-          return <img  class = "d-grid mx-auto mt-5 mb-5 rounded" width="300px" height = "auto" display="flex" align-items="center"src = {url} />  
-        })}
-      </div> 
-      </Container>   
+      <div class="text-center p-3">
+         Open Everyday: 10a.m. - 9p.m.
+      </div>
+      <form>
+        <div class="text-start p-3">
+          <label>Feedback</label>
+          <input type="email" class="form-control" placeholder="Give your feedback"></input>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    </footer>
     </>
   )
 }
